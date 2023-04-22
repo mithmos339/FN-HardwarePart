@@ -43,7 +43,7 @@ int miss = 0;
 int x;
 
 void loop() {
-  if(Firebase.getInt(data,"username/plus")){
+  if(Firebase.getInt(data,"username/plus")){//รอ SET ค่า end เป็น INT
     if(data.dataType() == "int"){
         x = data.intData();
     }
