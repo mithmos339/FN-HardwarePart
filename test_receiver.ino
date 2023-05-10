@@ -8,21 +8,15 @@
 
 
 int laserP = D7;
-int laserM = D8;
-int r = D2;
-int g = D1;
-const int buzzer = D5;
+int r = D1;
+int g = D2;
 int plus = 0;
-int miss = 0;
 
 void setup() {
   Serial.begin(9600);
   pinMode(laserP,INPUT);
-  pinMode(laserM,INPUT);
   pinMode(r,OUTPUT); //green
   pinMode(g,OUTPUT);
-  pinMode(buzzer,OUTPUT);
-  //digitalWrite(buzzer, HIGH);
   connectWiFi();
   
 }
@@ -37,24 +31,13 @@ void connectWiFi(){
 }
 
 void loop() {
-    digitalWrite(buzzer,HIGH);
     int value = digitalRead(laserP);
     if (value == 0){
       plus++;
-      digitalWrite(r,HIGH);
-      digitalWrite(g,LOW);
-      digitalWrite(buzzer,HIGH);
-    }else{
       digitalWrite(r,LOW);
       digitalWrite(g,HIGH);
-      digitalWrite(buzzer,HIGH);
-    }
-    int value1 = digitalRead(laserM);
-    if (value1 == 1){
-      miss++;
-      digitalWrite(buzzer,LOW);
-      delay(10);
-      digitalWrite(buzzer,LOW);
-      delay(10);
+    }else{
+      digitalWrite(r,HIGH);
+      digitalWrite(g,LOW);
     }
 }
