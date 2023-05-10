@@ -40,4 +40,5 @@ void loop() {
       digitalWrite(r,HIGH);
       digitalWrite(g,LOW);
     }
+  Firebase.setInt(data,"username/TEST", plus);
 }
